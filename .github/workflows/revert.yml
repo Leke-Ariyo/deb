@@ -16,5 +16,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with: 
-          ref: ${{ steps.latest.outputs.tag_name }}
-        run: ./revert.sh ${{ steps.latest.outputs.tag_name }} ${{ github.repository }}
+          ref: ${{ steps.revert.outputs.tag_name }}
+
+      - name: Revert
+        run: ./revert.sh ${{ steps.revert.outputs.tag_name }} ${{ github.repository }}
